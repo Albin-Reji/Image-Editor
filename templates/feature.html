@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #4776e6, #8e44ad);
+            color: #fff;
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .image-card {
+            margin: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .image-card:hover {
+            transform: scale(1.05);
+        }
+
+        .image-card img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: filter 0.3s;
+        }
+
+        .image-card:hover img {
+            filter: brightness(1.2);
+        }
+
+        .image-card h3 {
+            margin: 15px 0 10px;
+            font-size: 1.5em;
+        }
+
+        .image-card p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        .blur img { filter: blur(5px); }
+        .contrast img { filter: contrast(200%); }
+        .brightness img { filter: brightness(150%); }
+        .grayscale img { filter: grayscale(100%); }
+        .sepia img { filter: sepia(100%); }
+        .saturate img { filter: saturate(200%); }
+        .invert img { filter: invert(100%); }
+        .opacity img { filter: opacity(50%); }
+
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: right;
+            margin-top: 10px;
+        }
+
+        nav li {
+            list-style: none;
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Image Operations </h1>
+        <nav>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/feature/">feature</a></li>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="image-card blur">
+            <img src="https://imgs.search.brave.com/bKo42M1JMAFk-9rFLxmcPjJklJThDjIVhscEn7SMoJI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/Ny8xNy8xMi8xMi9w/ZW1icm9rZS13ZWxz/aC1jb3JnaS03MzI3/Mjg1XzY0MC5qcGc" alt="Blurred Image">
+            <h3>Blur</h3>
+            <p>Applies a Gaussian blur to the image.</p>
+        </div>
+        <div class="image-card contrast">
+            <img src="https://imgs.search.brave.com/bKo42M1JMAFk-9rFLxmcPjJklJThDjIVhscEn7SMoJI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/Ny8xNy8xMi8xMi9w/ZW1icm9rZS13ZWxz/aC1jb3JnaS03MzI3/Mjg1XzY0MC5qcGc" alt="High Contrast Image">
+            <h3>Contrast</h3>
+            <p>Adjusts the contrast of the image.</p>
+        </div>
+        <div class="image-card brightness">
+            <img src="https://imgs.search.brave.com/bKo42M1JMAFk-9rFLxmcPjJklJThDjIVhscEn7SMoJI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/Ny8xNy8xMi8xMi9w/ZW1icm9rZS13ZWxz/aC1jb3JnaS03MzI3/Mjg1XzY0MC5qcGc" alt="Bright Image">
+            <h3>Brightness</h3>
+            <p>Adjusts the brightness of the image.</p>
+        </div>
+        <div class="image-card grayscale">
+            <img src="https://imgs.search.brave.com/bKo42M1JMAFk-9rFLxmcPjJklJThDjIVhscEn7SMoJI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/Ny8xNy8xMi8xMi9w/ZW1icm9rZS13ZWxz/aC1jb3JnaS03MzI3/Mjg1XzY0MC5qcGc" alt="Grayscale Image">
+            <h3>Grayscale</h3>
+            <p>Converts the image to shades of gray.</p>
+        </div>
+        <div class="image-card sepia">
+            <img src="https://imgs.search.brave.com/bKo42M1JMAFk-9rFLxmcPjJklJThDjIVhscEn7SMoJI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/Ny8xNy8xMi8xMi9w/ZW1icm9rZS13ZWxz/aC1jb3JnaS03MzI3/Mjg1XzY0MC5qcGc" alt="Sepia Image">
+            <h3>Sepia</h3>
+            <p>Applies a sepia tone to the image.</p>
+        </div>
+        <div class="image-card saturate">
+            <img src="https://imgs.search.brave.com/bKo42M1JMAFk-9rFLxmcPjJklJThDjIVhscEn7SMoJI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/Ny8xNy8xMi8xMi9w/ZW1icm9rZS13ZWxz/aC1jb3JnaS03MzI3/Mjg1XzY0MC5qcGc" alt="Saturated Image">
+            <h3>Saturate</h3>
+            <p>Adjusts the color saturation of the image.</p>
+        </div>
+        <div class="image-card invert">
+            <img src="https://imgs.search.brave.com/bKo42M1JMAFk-9rFLxmcPjJklJThDjIVhscEn7SMoJI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/Ny8xNy8xMi8xMi9w/ZW1icm9rZS13ZWxz/aC1jb3JnaS03MzI3/Mjg1XzY0MC5qcGc" alt="Inverted Image">
+            <h3>Invert</h3>
+            <p>Inverts the colors of the image.</p>
+        </div>
+        <div class="image-card opacity">
+            <img src="https://imgs.search.brave.com/bKo42M1JMAFk-9rFLxmcPjJklJThDjIVhscEn7SMoJI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/Ny8xNy8xMi8xMi9w/ZW1icm9rZS13ZWxz/aC1jb3JnaS03MzI3/Mjg1XzY0MC5qcGc" alt="Opaque Image">
+            <h3>Opacity</h3>
+            <p>Adjusts the transparency of the image.</p>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 Image Operations
+    </footer>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Editor App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+
+        nav {
+            background: #ADADAD; /* Transparent background */
+            color: #fff;
+            padding: 1rem;
+            position: fixed;
+            right: 0;
+            top: 0;
+            text-align: right;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1rem; /* Smaller text size */
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff6347;
+        }
+
+        .header {
+            background: url('https://cdn.prod.website-files.com/64e27cdd42db7ecf119d5e61/662b67b3fba923b8dd3a1642_hp-header-cover%402x.jpg') no-repeat center center/cover;
+            height: 50vh;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+        }
+
+        .header .buttons {
+            margin-top: 1rem;
+        }
+
+        .header .buttons a {
+            background: #ff6347;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .header .buttons a:hover {
+            background: #333;
+        }
+
+        .container {
+            padding: 5rem;
+            max-width: 1200px;
+            margin: -100px auto 0 auto;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            margin: 1rem;
+            background: #f4f4f4;
+            border-radius: 8px;
+        }
+
+        .feature img {
+            width: 300px;
+            height: 200px;
+            border-radius: 10px;
+        }
+
+        .feature h2 {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature p {
+            font-size: 1rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background: #333;
+            color: #fff;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/home/">Gallery</a>
+    <a href="/feature/">Feature</a>
+    <a href="/about/">About</a>
+    <a href="/add/upload-img/">Add Image</a>
+</nav>
+
+<div class="header">
+    <div>
+        <h1>Welcome to Photo Editor App</h1>
+        <p>Community, tools, and exposure for photographers.</p>
+        
+    </div>
+</div>
+
+<div class="container">
+    <div class="features">
+        <div class="feature">
+            <img src="https://cdn.prod.website-files.com/64e27cdd42db7ecf119d5e61/658dc0d69707831da728aee0_vsco-desktop%402x.webp" alt="Community Profile">
+            <h2>Community Profile</h2>
+            <p>Get inspired, share your vision, and connect with a global community of photographers.</p>
+        </div>
+        <div class="feature">
+            <img src="https://images.unsplash.com/photo-1572883454114-1cf0031ede2a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YnVpbGRpbmdzfGVufDB8fDB8fHww" alt="Quality Tools">
+            <h2>Quality Tools</h2>
+            <p>Mobile and desktop photo editing tools to help you define and express your photography style.</p>
+        </div>
+        <div class="feature">
+            <img src="https://images.unsplash.com/photo-1482053450283-3e0b78b09a70?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZGVzaWdufGVufDB8fDB8fHww" alt="Creative">
+            <h2>Creative</h2>
+            <p>Smart job matching for businesses looking to hire a photographer for their next project or campaign.</p>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    &copy; 2024 Photo Editor App. All rights reserved.
+</div>
+
+</body>
+</html>

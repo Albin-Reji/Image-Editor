@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 20px;
+            background-color: #007bff;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        header a:hover {
+            background-color: #0056b3;
+        }
+        h1 {
+            margin: 20px 0;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        .gallery a {
+            margin: 10px; /* Add spacing between images */
+            transition: transform 0.3s ease;
+            border: 1px solid #ddd; /* Optional border for styling */
+            border-radius: 5px; /* Optional rounded corners for styling */
+            overflow: hidden; /* Ensure the border-radius works with images */
+        }
+        .gallery a:hover {
+            transform: scale(1.05); /* Slightly enlarge image on hover */
+        }
+        .gallery img {
+            width: 200px; /* Adjust image width as needed */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Ensure image fills the anchor */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/">Home</a>
+    </header>
+    <h1>Image Gallery</h1>
+    <div class="gallery">
+        {% for file in fileList %}
+            <a href="/media/imageprocessed/{{ file }}">
+                <img src="/media/imageprocessed/{{ file }}" alt="Image">
+            </a>
+        {% endfor %}
+    </div>
+</body>
+</html>
