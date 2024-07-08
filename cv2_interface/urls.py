@@ -15,7 +15,6 @@ urlpatterns=[
      path('edit/editimage/contrast/<str:imgname>/', views.adjust_contrast, name='contrast'),
      path('edit/editimage/brightness/<str:imgname>/', views.brightness, name='brightness'),
      path('edit/editimage/blur/<str:imgname>/', views.blur, name='blur'),
-     path('edit/editimage/opacity/<str:imgname>/', views.opacity, name='opacity'),
      path('edit/editimage/saturation/<str:imgname>/', views.saturation, name='saturation'),
      path('edit/editimage/invert/<str:imgname>/', views.invert, name='invert'),
      path('edit/editimage/sharpness/<str:imgname>/', views.sharpness, name='sharpness'),

@@ -55,15 +55,6 @@
 <body>
     <a href="/edit/{{imgname}}/" class="back-link">Back</a>
     <div class="container">
-        
-        <form action="" method="post">
-            {% csrf_token %}
-        <!-- Include this line if using Django to handle CSRF tokens -->
-        <!-- {% csrf_token %} -->
-        <label for="name">Value:</label>
-        <input type="text" id="name" name="name" required>
-        <input type="submit" value="Submit">
-    </form>
         <div class="half">
             <h3>Original Image</h3>
             <img src="{{ new_path }}" alt="Original Image">
