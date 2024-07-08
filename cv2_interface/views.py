@@ -1,3 +1,5 @@
+from urllib.parse import urljoin
+
 import cv2
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
@@ -64,11 +66,11 @@ def rotate(request, imgname):
     image = Image.open(new_path)
     rotate_image = image.rotate(90)
 
-    rotated_path = os.path.join(settings.MEDIA_ROOT, 'imageprocessed', f'{imgname}.png')
+    rotated_path = os.path.join(settings.MEDIA_ROOT, 'imageprocessed', f'{imgname}_rotate.png')
     os.makedirs(os.path.dirname(rotated_path), exist_ok=True)
     rotate_image.save(rotated_path)
 
-    rotated_url = os.path.join(settings.MEDIA_URL, 'imageprocessed', f'{imgname}.png')
+    rotated_url = os.path.join(settings.MEDIA_URL, 'imageprocessed', f'{imgname}_rotate.png')
 
     content = {
         'new_path': os.path.join(settings.MEDIA_URL, img.upload_image.name),
@@ -83,11 +85,11 @@ def grayscale(request, imgname):
     image = Image.open(new_path)
     grayscale_img = image.convert('L')
 
-    grayscale_path = os.path.join(settings.MEDIA_ROOT, 'imageprocessed', f'{imgname}.png')
+    grayscale_path = os.path.join(settings.MEDIA_ROOT, 'imageprocessed', f'{imgname}_grayscale.png')
     os.makedirs(os.path.dirname(grayscale_path), exist_ok=True)
     grayscale_img.save(grayscale_path)
 
-    grayscle_url = os.path.join(settings.MEDIA_URL, 'imageprocessed', f'{imgname}.png')
+    grayscle_url = os.path.join(settings.MEDIA_URL, 'imageprocessed', f'{imgname}_grayscale.png')
 
     content = {
         'new_path': os.path.join(settings.MEDIA_URL, img.upload_image.name),
@@ -105,11 +107,11 @@ def blur(request, imgname):
     image = Image.open(new_path)
     blur_img = image.filter(ImageFilter.GaussianBlur(6))
 
-    blur_path = os.path.join(settings.MEDIA_ROOT, 'imageprocessed', f'{imgname}.png')
+    blur_path = os.path.join(settings.MEDIA_ROOT, 'imageprocessed', f'{imgname}_blur.png')
     os.makedirs(os.path.dirname(blur_path), exist_ok=True)
 
     blur_img.save(blur_path)
-    blur_url = os.path.join(settings.MEDIA_URL, 'imageprocessed', f'{imgname}.png')
+    blur_url = os.path.join(settings.MEDIA_URL, 'imageprocessed', f'{imgname}_blur.png')
 
     content = {
         'new_path': os.path.join(settings.MEDIA_URL, img.upload_image.name),
@@ -198,20 +200,25 @@ def opacity(request, imgname, opacity=0.5):
     return render(request, 'editimg.html', context)
 
 
-def invert (request, imgname):
+def invert(request, imgname):
     img = get_object_or_404(Images, name=imgname)
     img_path = os.path.join(settings.MEDIA_ROOT, img.upload_image.name)
     image = Image.open(img_path)
 
     # Invert the colors of the image
-    inverted_image = ImageOps.invert(image)
+    if image.mode == 'RGBA':
+        r, g, b, a = image.split()
+        inverted_image = Image.merge('RGBA', (ImageOps.invert(r), ImageOps.invert(g), ImageOps.invert(b), a))
+    else:
+        inverted_image = ImageOps.invert(image)
 
     # Save the inverted image
-    inverted_path = os.path.join(settings.MEDIA_ROOT, 'imageprocessed', f'{imgname}_inverted.png')
-    os.makedirs(os.path.dirname(inverted_path), exist_ok=True)
+    inverted_dir = os.path.join(settings.MEDIA_ROOT, 'imageprocessed')
+    os.makedirs(inverted_dir, exist_ok=True)
+    inverted_path = os.path.join(inverted_dir, f'{imgname}_inverted.png')
     inverted_image.save(inverted_path)
 
-    inverted_url = os.path.join(settings.MEDIA_URL, 'imageprocessed', f'{imgname}_inverted.png')
+    inverted_url = os.path.join(settings.MEDIA_URL, f'imageprocessed/{imgname}_inverted.png')
     context = {
         'new_path': img.upload_image.url,
         'rotate_image': inverted_url,
