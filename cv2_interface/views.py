@@ -286,7 +286,60 @@ def sharpness(request, imgname):
         return render(request, 'editimg.html', context)
     else:
         return render(request, 'editimg.html', {})
+#    _________________________________
+def flipimage(request, imgname):
+    if request.method=="POST":
+        value=request.POST.get("name")
 
+        if value is not None:
+            value=value
+        else:
+            value=2.5
+        img = get_object_or_404(Images, name=imgname)
+        img_path = os.path.join(settings.MEDIA_ROOT, img.upload_image.name)
+        image = Image.open(img_path)
+        flip_image = ImageOps.flip(image)
+
+        saturated_path = os.path.join(settings.MEDIA_ROOT, 'imageprocessed', f'{imgname}_flipimage.png')
+        os.makedirs(os.path.dirname(saturated_path), exist_ok=True)
+        flip_image.save(saturated_path)
+        saturated_url = os.path.join(settings.MEDIA_URL, 'imageprocessed', f'{imgname}_flipimage.png')
+        context = {
+            'new_path': img.upload_image.url,
+            'rotate_image': saturated_url,
+            'imgname': imgname
+        }
+        return render(request, 'editimg.html', context)
+    else:
+        return render(request, 'editimg.html', {})
+# _______________________________
+
+def mirrorimage(request, imgname):
+    if request.method=="POST":
+        value=request.POST.get("name")
+
+        if value is not None:
+            value=value
+        else:
+            value=2.5
+        img = get_object_or_404(Images, name=imgname)
+        img_path = os.path.join(settings.MEDIA_ROOT, img.upload_image.name)
+        image = Image.open(img_path)
+        mirrorimage = ImageOps.mirror(image)
+
+        saturated_path = os.path.join(settings.MEDIA_ROOT, 'imageprocessed', f'{imgname}_flipimage.png')
+        os.makedirs(os.path.dirname(saturated_path), exist_ok=True)
+        mirrorimage.save(saturated_path)
+        saturated_url = os.path.join(settings.MEDIA_URL, 'imageprocessed', f'{imgname}_flipimage.png')
+        context = {
+            'new_path': img.upload_image.url,
+            'rotate_image': saturated_url,
+            'imgname': imgname
+        }
+        return render(request, 'editimg.html', context)
+    else:
+        return render(request, 'editimg.html', {})
+#     ___________________________________
 def recent_activity(request):
     folder_path = 'D:/cvDjango/ComputerVision_Django/media/imageprocessed'
     # Get a list of files in the folder
