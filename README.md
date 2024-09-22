@@ -12,8 +12,11 @@ Upload and Save Images: Upload images for editing and download them after proces
 
 ## Tech Stack
 Backend: Django
+
 Frontend: HTML, CSS
+
 Database: SQLite (default Django database)
+
 Image Processing: Pillow
 
 ## Setup Instructions
