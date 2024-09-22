@@ -1,5 +1,7 @@
 ﻿# Image-Editor
-This is a Python-based Digital Image Editing Application built using the Pillow library for image processing and Django as the web framework. The application allows users to perform basic image editing tasks such as resizing, cropping, and applying filters to images in an intuitive, user-friendly interface.
+This is a Python-based Digital Image Editing Application built using the Pillow library for image processing and Django as the web framework.
+
+The application allows users to perform basic image editing tasks such as resizing, cropping, and applying filters to images in an intuitive, user-friendly interface.
 
 ## Features
 Resize Images: Adjust the dimensions of images.
@@ -22,5 +24,7 @@ Image Processing: Pillow
 ## Setup Instructions
 ### Prerequisites
 Python 3.x
+
 Django
+
 Pillow
